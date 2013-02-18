@@ -20,6 +20,7 @@
 		67A1C76A16C875DE00C53C42 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A1C76916C875DE00C53C42 /* Default-568h@2x.png */; };
 		67A1C76D16C875DE00C53C42 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67A1C76B16C875DE00C53C42 /* MainStoryboard.storyboard */; };
 		67A1C77016C875DE00C53C42 /* IT1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A1C76F16C875DE00C53C42 /* IT1ViewController.m */; };
+		67B5D99216CAE6A300C22342 /* IT1EmployeeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B5D99116CAE6A300C22342 /* IT1EmployeeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,8 @@
 		67A1C76C16C875DE00C53C42 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		67A1C76E16C875DE00C53C42 /* IT1ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IT1ViewController.h; sourceTree = "<group>"; };
 		67A1C76F16C875DE00C53C42 /* IT1ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IT1ViewController.m; sourceTree = "<group>"; };
+		67B5D99016CAE6A300C22342 /* IT1EmployeeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IT1EmployeeViewController.h; sourceTree = "<group>"; };
+		67B5D99116CAE6A300C22342 /* IT1EmployeeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IT1EmployeeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +99,8 @@
 				67928E4216C8C4A200729FFE /* IT1SquaresView.m */,
 				67A1C76E16C875DE00C53C42 /* IT1ViewController.h */,
 				67A1C76F16C875DE00C53C42 /* IT1ViewController.m */,
+				67B5D99016CAE6A300C22342 /* IT1EmployeeViewController.h */,
+				67B5D99116CAE6A300C22342 /* IT1EmployeeViewController.m */,
 				67928E3E16C8B54800729FFE /* IT1TipViewController.h */,
 				67928E3F16C8B54800729FFE /* IT1TipViewController.m */,
 				67A1C75A16C875DE00C53C42 /* Supporting Files */,
@@ -189,6 +194,7 @@
 				67A1C77016C875DE00C53C42 /* IT1ViewController.m in Sources */,
 				67928E4016C8B54800729FFE /* IT1TipViewController.m in Sources */,
 				67928E4316C8C4A200729FFE /* IT1SquaresView.m in Sources */,
+				67B5D99216CAE6A300C22342 /* IT1EmployeeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

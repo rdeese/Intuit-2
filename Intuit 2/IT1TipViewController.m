@@ -17,6 +17,8 @@
 @synthesize pickerData2;
 @synthesize tipButton;
 @synthesize tipPicker;
+@synthesize custTotal;
+@synthesize totalLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,18 +34,19 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     pickerData1 = [[NSArray alloc] initWithObjects:@"$4",@"$3",@"$2",@"$1",@"$0", nil];
-    pickerData2 = [[NSArray alloc] initWithObjects:@".00",@".75",@".50",@".25",@".00",
+    pickerData2 = [[NSArray alloc] initWithObjects:/*@".00",*/@".75",@".50",@".25",@".00"/*,
                    @".75",@".50",@".25",@".00", @".75",@".50",@".25",@".00",
                    @".75",@".50",@".25",@".00", @".75",@".50",@".25",@".00",
                    @".75",@".50",@".25",@".00", @".75",@".50",@".25",@".00",
                    @".75",@".50",@".25",@".00", @".75",@".50",@".25",@".00",
-                   @".75",@".50",@".25",@".00", @".75",@".50",@".25",@".00", nil];
+                   @".75",@".50",@".25",@".00", @".75",@".50",@".25",@".00"*/, nil];
     tipPicker.delegate = self;
     tipPicker.dataSource = self;
     dollarPick = [pickerData1 count]-1;
     [tipPicker selectRow:(dollarPick) inComponent:0 animated:NO];
-    centsPick = (4*5);
+    centsPick = [pickerData2 count]-1;
     [tipPicker selectRow:centsPick inComponent:1 animated:NO];
+    [self updateTotalWTip];
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,9 +55,33 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) updateTotalWTip
+{
+    totalWTip = custTotal + [[pickerData2 objectAtIndex:centsPick] doubleValue] +
+    4-dollarPick;
+    NSString* temp = [[NSString alloc] initWithFormat:@"%@%f",@"$",totalWTip];
+    NSRange displayRange;
+    if (totalWTip >= 10) {
+        displayRange = NSMakeRange(0, 6);
+    }
+    else {
+        displayRange = NSMakeRange(0, 5);
+    }
+    totalLabel.text = [temp substringWithRange:displayRange];
+}
+
 -(IBAction) buttonPressed:(id)sender
 {
+    dollarPick = [pickerData1 count]-1;
+    [tipPicker selectRow:(dollarPick) inComponent:0 animated:NO];
+    centsPick = (4*5);
+    [tipPicker selectRow:centsPick inComponent:1 animated:NO];
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void) getCustTotal:(IT1EmployeeViewController *)controller
+{
+    custTotal = [controller.costField.text doubleValue];
 }
 
 //DELEGATE
@@ -63,6 +90,7 @@
 {
     if (component == 1)
     {
+        /*
         NSInteger dollarChange = 0;
         if (abs(row - centsPick)/4 > 0)
         {
@@ -85,11 +113,13 @@
         }
         
         dollarChange = 0;
+         */
         [pickerView selectRow: 5*4+(row%4)
                   inComponent:1 animated:NO];
-        dollarPick = [pickerView selectedRowInComponent:0];
-        centsPick = [pickerView selectedRowInComponent:1];
     }
+    dollarPick = [pickerView selectedRowInComponent:0];
+    centsPick = [pickerView selectedRowInComponent:1];
+    [self updateTotalWTip];
 }
 
 - (CGFloat)pickerView:(UIPickerView *)pickerView
@@ -130,5 +160,17 @@
     else
         return [pickerData2 count];
 }
+
+//ROTATION
+-(BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAll;
+}
+
 
 @end

@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+@class IT1EmployeeViewController;
+
+@protocol EmployeeVCDelegate <NSObject>
+-(void) getCustTotal:(IT1EmployeeViewController *)controller;
+@end
 
 @interface IT1EmployeeViewController : UIViewController
+@property (strong) IBOutlet UITextField *costField;
+@property (nonatomic, weak) id <EmployeeVCDelegate> delegate;
 
 @end
