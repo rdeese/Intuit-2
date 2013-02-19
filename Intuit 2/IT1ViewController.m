@@ -45,6 +45,11 @@
     }
 }
 
+-(void) resetCustTotal
+{
+    custTotal = 0;
+}
+
 - (void)awakeFromNib
 {
     isShowingUpsideDown = NO;
@@ -59,7 +64,9 @@
 {
     if ([segue.identifier isEqualToString:@"segueToTip"])
     {
-        IT1TipViewController *controller = (IT1TipViewController *)segue.destinationViewController;
+        tipController = (IT1TipViewController *)segue.destinationViewController;
+        tipController.custTotal = custTotal;
+        tipController.delegate = self;
     }
 }
 
@@ -72,10 +79,12 @@
         [self performSegueWithIdentifier:@"ToEmployee" sender:self];
         isShowingUpsideDown = YES;
     }
-    else if (deviceOrientation == UIDeviceOrientationPortrait)
+    else if (deviceOrientation == UIDeviceOrientationPortrait &&
+             isShowingUpsideDown)
     {
         IT1EmployeeViewController *empView = (IT1EmployeeViewController*)self.presentedViewController;
-        empView.delegate = self;
+        custTotal = [empView.costField.text doubleValue];
+        empView.delegate = tipController;
         [empView.delegate getCustTotal:empView];
         [self dismissViewControllerAnimated:YES completion:nil];
         isShowingUpsideDown = NO;

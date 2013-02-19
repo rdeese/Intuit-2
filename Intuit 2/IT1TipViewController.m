@@ -7,6 +7,7 @@
 //
 
 #import "IT1TipViewController.h"
+#import "IT1ViewController.h"
 
 @interface IT1TipViewController ()
 
@@ -58,7 +59,7 @@
 -(void) updateTotalWTip
 {
     totalWTip = custTotal + [[pickerData2 objectAtIndex:centsPick] doubleValue] +
-    4-dollarPick;
+                4-dollarPick;
     NSString* temp = [[NSString alloc] initWithFormat:@"%@%f",@"$",totalWTip];
     NSRange displayRange;
     if (totalWTip >= 10) {
@@ -72,16 +73,19 @@
 
 -(IBAction) buttonPressed:(id)sender
 {
+    custTotal = 0;
     dollarPick = [pickerData1 count]-1;
     [tipPicker selectRow:(dollarPick) inComponent:0 animated:NO];
-    centsPick = (4*5);
+    centsPick = [pickerData2 count]-1;
     [tipPicker selectRow:centsPick inComponent:1 animated:NO];
+    [self.delegate resetCustTotal];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void) getCustTotal:(IT1EmployeeViewController *)controller
 {
     custTotal = [controller.costField.text doubleValue];
+    [self updateTotalWTip];
 }
 
 //DELEGATE

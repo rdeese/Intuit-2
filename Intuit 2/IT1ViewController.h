@@ -11,9 +11,12 @@
 #import "IT1EmployeeViewController.h"
 #import "IT1TipViewController.h"
 
-@interface IT1ViewController : UIViewController
+@class IT1ViewController;
+
+@interface IT1ViewController : UIViewController <TipVCDelegate>
 {
     bool isShowingUpsideDown;
+    IT1TipViewController* tipController;
     double custTotal;
 }
 @property (strong) IBOutlet UILabel *idLabel;
@@ -21,5 +24,6 @@
 @property (strong) IBOutlet UIButton *nextButton;
 
 -(IBAction) buttonPressed:(id)sender;
+-(void) resetCustTotal;
 
 @end
