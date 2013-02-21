@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		67928E4016C8B54800729FFE /* IT1TipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67928E3F16C8B54800729FFE /* IT1TipViewController.m */; };
 		67928E4316C8C4A200729FFE /* IT1SquaresView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67928E4216C8C4A200729FFE /* IT1SquaresView.m */; };
+		67A03DF516D3471100B1F8AA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A03DF416D3471100B1F8AA /* MessageUI.framework */; };
+		67A03DF916D3608E00B1F8AA /* intuit2.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A03DF816D3608E00B1F8AA /* intuit2.png */; };
+		67A03DFB16D360D400B1F8AA /* intuit2r.png in Resources */ = {isa = PBXBuildFile; fileRef = 67A03DFA16D360D400B1F8AA /* intuit2r.png */; };
 		67A1C75416C875DE00C53C42 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A1C75316C875DE00C53C42 /* UIKit.framework */; };
 		67A1C75616C875DE00C53C42 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A1C75516C875DE00C53C42 /* Foundation.framework */; };
 		67A1C75816C875DE00C53C42 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A1C75716C875DE00C53C42 /* CoreGraphics.framework */; };
@@ -28,6 +31,9 @@
 		67928E3F16C8B54800729FFE /* IT1TipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IT1TipViewController.m; sourceTree = "<group>"; };
 		67928E4116C8C4A200729FFE /* IT1SquaresView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IT1SquaresView.h; sourceTree = "<group>"; };
 		67928E4216C8C4A200729FFE /* IT1SquaresView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IT1SquaresView.m; sourceTree = "<group>"; };
+		67A03DF416D3471100B1F8AA /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		67A03DF816D3608E00B1F8AA /* intuit2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = intuit2.png; sourceTree = "<group>"; };
+		67A03DFA16D360D400B1F8AA /* intuit2r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = intuit2r.png; sourceTree = "<group>"; };
 		67A1C75016C875DE00C53C42 /* Intuit 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Intuit 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67A1C75316C875DE00C53C42 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		67A1C75516C875DE00C53C42 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -53,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67A03DF516D3471100B1F8AA /* MessageUI.framework in Frameworks */,
 				67A1C75416C875DE00C53C42 /* UIKit.framework in Frameworks */,
 				67A1C75616C875DE00C53C42 /* Foundation.framework in Frameworks */,
 				67A1C75816C875DE00C53C42 /* CoreGraphics.framework in Frameworks */,
@@ -65,6 +72,9 @@
 		67A1C74716C875DE00C53C42 = {
 			isa = PBXGroup;
 			children = (
+				67A03DFA16D360D400B1F8AA /* intuit2r.png */,
+				67A03DF816D3608E00B1F8AA /* intuit2.png */,
+				67A03DF416D3471100B1F8AA /* MessageUI.framework */,
 				67A1C75916C875DE00C53C42 /* Intuit 2 */,
 				67A1C75216C875DE00C53C42 /* Frameworks */,
 				67A1C75116C875DE00C53C42 /* Products */,
@@ -179,6 +189,8 @@
 				67A1C76816C875DE00C53C42 /* Default@2x.png in Resources */,
 				67A1C76A16C875DE00C53C42 /* Default-568h@2x.png in Resources */,
 				67A1C76D16C875DE00C53C42 /* MainStoryboard.storyboard in Resources */,
+				67A03DF916D3608E00B1F8AA /* intuit2.png in Resources */,
+				67A03DFB16D360D400B1F8AA /* intuit2r.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

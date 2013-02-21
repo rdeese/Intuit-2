@@ -16,12 +16,16 @@
 @synthesize idLabel;
 @synthesize idField;
 @synthesize nextButton;
+@synthesize empController;
+@synthesize tipController;
+@synthesize localArray;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [idLabel setHidden:TRUE];
+    localArray = [[NSMutableArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,6 +54,11 @@
     custTotal = 0;
 }
 
+-(void)saveLocalData:(IT1TipViewController*) controller
+{
+    localArray = controller.localArray;
+}
+
 - (void)awakeFromNib
 {
     isShowingUpsideDown = NO;
@@ -67,6 +76,12 @@
         tipController = (IT1TipViewController *)segue.destinationViewController;
         tipController.custTotal = custTotal;
         tipController.delegate = self;
+        tipController.localArray = localArray;
+    }
+    if ([segue.identifier isEqualToString:@"ToEmployee"])
+    {
+        empController = (IT1EmployeeViewController*)segue.destinationViewController;
+        empController.delegate = tipController;
     }
 }
 
@@ -82,10 +97,8 @@
     else if (deviceOrientation == UIDeviceOrientationPortrait &&
              isShowingUpsideDown)
     {
-        IT1EmployeeViewController *empView = (IT1EmployeeViewController*)self.presentedViewController;
-        custTotal = [empView.costField.text doubleValue];
-        empView.delegate = tipController;
-        [empView.delegate getCustTotal:empView];
+        custTotal = [empController.costField.text doubleValue];
+        [empController.delegate getCustTotal:empController];
         [self dismissViewControllerAnimated:YES completion:nil];
         isShowingUpsideDown = NO;
     }

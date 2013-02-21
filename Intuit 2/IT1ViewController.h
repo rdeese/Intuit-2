@@ -16,12 +16,14 @@
 @interface IT1ViewController : UIViewController <TipVCDelegate>
 {
     bool isShowingUpsideDown;
-    IT1TipViewController* tipController;
     double custTotal;
 }
 @property (strong) IBOutlet UILabel *idLabel;
 @property (strong) IBOutlet UITextField *idField;
 @property (strong) IBOutlet UIButton *nextButton;
+@property (strong) IT1EmployeeViewController* empController;
+@property (strong) IT1TipViewController* tipController;
+@property NSMutableArray* localArray;
 
 -(IBAction) buttonPressed:(id)sender;
 -(void) resetCustTotal;

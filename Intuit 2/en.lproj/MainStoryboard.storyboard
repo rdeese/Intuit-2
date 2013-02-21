@@ -35,20 +35,39 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad" enablesReturnKeyAutomatically="YES"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SvX-iT-nnn">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="X8m-38-InW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Send Tip Data to Rupert">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="eAM-Ys-s3F" eventType="touchUpInside" id="ib5-De-BeC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="FPB-52-uuQ" firstAttribute="trailing" secondItem="kcm-WN-q2k" secondAttribute="trailing" type="default" id="Gk8-ZD-F4p"/>
                             <constraint firstItem="FPB-52-uuQ" firstAttribute="top" secondItem="ECE-WE-nHc" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="RE9-mj-b79"/>
+                            <constraint firstAttribute="bottom" secondItem="SvX-iT-nnn" secondAttribute="bottom" constant="150" id="Zsm-ib-Qgz"/>
                             <constraint firstItem="FPB-52-uuQ" firstAttribute="leading" secondItem="kcm-WN-q2k" secondAttribute="leading" type="default" id="a3e-Tt-lCy"/>
-                            <constraint firstItem="FPB-52-uuQ" firstAttribute="centerX" secondItem="OGc-zf-uA7" secondAttribute="centerX" type="default" id="aES-zq-sRq"/>
                             <constraint firstItem="ECE-WE-nHc" firstAttribute="top" secondItem="OGc-zf-uA7" secondAttribute="top" constant="145" id="etN-NZ-QBY"/>
+                            <constraint firstItem="SvX-iT-nnn" firstAttribute="centerX" secondItem="FPB-52-uuQ" secondAttribute="centerX" type="default" id="nPW-Ut-bDf"/>
                             <constraint firstItem="ECE-WE-nHc" firstAttribute="centerX" secondItem="FPB-52-uuQ" secondAttribute="centerX" type="default" id="nf9-xQ-oza"/>
                             <constraint firstItem="kcm-WN-q2k" firstAttribute="top" secondItem="OGc-zf-uA7" secondAttribute="top" constant="81" id="qfe-dp-dBX"/>
+                            <constraint firstItem="FPB-52-uuQ" firstAttribute="centerX" secondItem="OGc-zf-uA7" secondAttribute="centerX" type="default" id="s9U-cV-L78"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="costField" destination="ECE-WE-nHc" id="18F-9Z-3CL"/>
+                        <outlet property="sendDataButton" destination="SvX-iT-nnn" id="aqs-Wa-niF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L6B-9r-h8z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -217,7 +236,9 @@
         <class className="IT1EmployeeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IT1EmployeeViewController.h"/>
             <relationships>
+                <relationship kind="action" name="buttonPressed:"/>
                 <relationship kind="outlet" name="costField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="sendDataButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="IT1SquaresView" superclassName="UIView">

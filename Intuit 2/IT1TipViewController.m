@@ -20,6 +20,8 @@
 @synthesize tipPicker;
 @synthesize custTotal;
 @synthesize totalLabel;
+@synthesize delegate;
+@synthesize localArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,8 +60,9 @@
 
 -(void) updateTotalWTip
 {
-    totalWTip = custTotal + [[pickerData2 objectAtIndex:centsPick] doubleValue] +
+    tip = [[pickerData2 objectAtIndex:centsPick] doubleValue] +
                 4-dollarPick;
+    totalWTip = custTotal + tip;
     NSString* temp = [[NSString alloc] initWithFormat:@"%@%f",@"$",totalWTip];
     NSRange displayRange;
     if (totalWTip >= 10) {
@@ -73,6 +76,9 @@
 
 -(IBAction) buttonPressed:(id)sender
 {
+    [localArray addObject:[NSNumber numberWithDouble:custTotal]];
+    [localArray addObject:[NSString stringWithFormat:@"%@%f",@"*",tip]];
+    [self.delegate saveLocalData:self];
     custTotal = 0;
     dollarPick = [pickerData1 count]-1;
     [tipPicker selectRow:(dollarPick) inComponent:0 animated:NO];
@@ -86,6 +92,12 @@
 {
     custTotal = [controller.costField.text doubleValue];
     [self updateTotalWTip];
+}
+
+-(void)updateTipArray:(IT1EmployeeViewController *)empVC
+{
+    [empVC.tipArray addObjectsFromArray:localArray];
+    [localArray removeAllObjects];
 }
 
 //DELEGATE

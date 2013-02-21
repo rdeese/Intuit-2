@@ -14,6 +14,8 @@
 
 @implementation IT1EmployeeViewController
 @synthesize costField;
+@synthesize tipArray;
+@synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,6 +30,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    tipArray = [[NSMutableArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -36,9 +39,39 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)orientationChanged:(NSNotification *)notification
+-(IBAction)buttonPressed:(id)sender
+{
+    [self.delegate updateTipArray:self];
+    if ([MFMailComposeViewController canSendMail])
+    {
+        NSDate *now = [NSDate date];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateStyle:NSDateFormatterShortStyle];
+        [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"America/Los_Angeles"]];
+
+        MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
+        [mailController setSubject:[NSString stringWithFormat:@"%@%@",@"Tipping Data ",[formatter stringFromDate:now]]];
+        
+        NSString *dataString = [tipArray componentsJoinedByString:@"\n"];
+        [mailController setMessageBody:dataString isHTML:NO];
+        
+        [mailController setMailComposeDelegate:self];
+        [self presentViewController:mailController animated:YES completion:NULL];
+        [tipArray removeAllObjects];
+    }
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError*)error
 {
     
+    if (result == MFMailComposeResultSent) {
+        
+        NSLog(@"It's away!");
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 //ROTATION

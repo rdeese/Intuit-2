@@ -13,6 +13,7 @@
 @protocol TipVCDelegate <NSObject>
 
 -(void)resetCustTotal;
+-(void)saveLocalData:(IT1TipViewController*) controller;
 
 @end
 
@@ -20,6 +21,7 @@
 {
     NSInteger centsPick;
     NSInteger dollarPick;
+    double tip;
     double totalWTip;
 }
 
@@ -28,10 +30,13 @@
 @property (strong) IBOutlet UIButton *tipButton;
 @property (strong) IBOutlet UIPickerView *tipPicker;
 @property (strong) IBOutlet UILabel *totalLabel;
-@property (nonatomic, weak) id <TipVCDelegate> delegate;
+@property (nonatomic, strong) id <TipVCDelegate> delegate;
 @property double custTotal;
+@property (strong) NSMutableArray* localArray;
 
 -(IBAction) buttonPressed:(id)sender;
 -(void) updateTotalWTip;
+-(void)updateTipArray:(IT1EmployeeViewController *)empVC;
+
 
 @end
